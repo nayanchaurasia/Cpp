@@ -1,34 +1,30 @@
-/*                     PAIR SUM
-total number of pair of elements having sum equal to the given value x;
-*/
 #include<iostream>
 using namespace std;
-int targetSum(int array[],int num,int sum){
-    int count=0;
-    for (int i = 0; i < num; i++)
+
+void inputArray(int arr[],int size){
+    cout<<"enter the array \n";
+    for (int i = 0; i < size; i++)
+        cin>>arr[i];
+}
+
+void targetSum(int arr[],int size,int sum){
+
+    for (int i = 0; i < size-1; i++)
     {
-        for (int j = i+1; j < num; j++)
+        for (int j = i+1; j < size; j++)
         {
-            if (array[i]+array[j]==sum)
-                count++;
-        }
-        
+            if(sum==(arr[i]+arr[j]))
+                cout<<"["<<arr[i]<<","<<arr[j]<<"] ";
+        }   
     }
-    
-    return count;
 }
-void inputArray(int array[],int num){
-    cout<<"enter the elements : ";
-    for (int i = 0; i < num; i++)
-        cin>>array[i];  
-}
+
 int main(){
-    int n,a[1000],noOfPair,value;
-    cout<<"enter the number of elements ";
+    int array[100],value,n;
+    cout<<"enter the size of the array ";
     cin>>n;
-    inputArray(a,n);
-    cout<<"enter the sum ";
+    inputArray(array,n);
+    cout<<"enter the sum whose pair u want \n";
     cin>>value;
-    noOfPair=targetSum(a,n,value);
-    cout<<"the total number of pairs are : "<<noOfPair;
+    targetSum(array,n,value);
 }
